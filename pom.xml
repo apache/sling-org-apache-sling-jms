@@ -37,9 +37,9 @@
     </description>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/sling/trunk/contrib/commons/mom/jms</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/sling/trunk/contrib/commons/mom/jms</developerConnection>
-        <url>http://svn.apache.org/viewvc/sling/trunk/contrib/commons/mom/jms</url>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-jms.git</conncetion>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-jms.git</developerConnection>
+        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-jms.git</url>
     </scm>
 
     <properties>
