@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.Nonnull;
 import javax.jms.Connection;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -43,6 +42,7 @@ import org.apache.sling.mom.QueueManager;
 import org.apache.sling.mom.QueueReader;
 import org.apache.sling.mom.RequeueMessageException;
 import org.apache.sling.mom.Types;
+import org.jetbrains.annotations.NotNull;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -101,7 +101,7 @@ public class JMSQueueManager implements QueueManager {
      * @param message the message to post to the queue.
      */
     @Override
-    public void add(@Nonnull Types.QueueName name, @Nonnull Map<String, Object> message) {
+    public void add(@NotNull Types.QueueName name, @NotNull Map<String, Object> message) {
         Session session = null;
         try {
             session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);

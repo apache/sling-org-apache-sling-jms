@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.Nonnull;
 import javax.jms.Connection;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -43,6 +42,7 @@ import org.apache.sling.mom.MessageFilter;
 import org.apache.sling.mom.Subscriber;
 import org.apache.sling.mom.TopicManager;
 import org.apache.sling.mom.Types;
+import org.jetbrains.annotations.NotNull;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -205,10 +205,10 @@ public class JMSTopicManager implements TopicManager {
         private final MessageFilter filter;
         private final List<MessageConsumer> consumers = new ArrayList<MessageConsumer>();
 
-        public FilteredTopicSubscriber(@Nonnull Session session,
-                                       @Nonnull Subscriber subscriber,
-                                       @Nonnull String[] topicNames,
-                                       @Nonnull MessageFilter filter) throws JMSException {
+        public FilteredTopicSubscriber(@NotNull Session session,
+                                       @NotNull Subscriber subscriber,
+                                       @NotNull String[] topicNames,
+                                       @NotNull MessageFilter filter) throws JMSException {
             this.subscriber = subscriber;
             this.filter = filter;
             for (String t : topicNames) {

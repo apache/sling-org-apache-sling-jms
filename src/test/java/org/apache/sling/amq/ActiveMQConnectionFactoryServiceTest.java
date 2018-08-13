@@ -22,7 +22,6 @@ package org.apache.sling.amq;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import javax.annotation.Nonnull;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Message;
@@ -31,6 +30,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.slf4j.Logger;
@@ -67,11 +67,11 @@ public class ActiveMQConnectionFactoryServiceTest {
         deactivate(cfs);
     }
 
-    public static void deactivate(@Nonnull ActiveMQConnectionFactoryService cfs) {
+    public static void deactivate(@NotNull ActiveMQConnectionFactoryService cfs) {
         cfs.deactivate();
     }
 
-    @Nonnull
+    @NotNull
     public static ActiveMQConnectionFactoryService activate() {
         ActiveMQConnectionFactoryService amqConnectionFactoryService = new ActiveMQConnectionFactoryService();
         final ActiveMQConnectionFactoryService.Config config = Mockito.mock(ActiveMQConnectionFactoryService.Config.class);
