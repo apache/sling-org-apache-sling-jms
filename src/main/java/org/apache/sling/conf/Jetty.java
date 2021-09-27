@@ -45,7 +45,7 @@ import java.util.HashSet;
 
 
 /**
- * Generated Java based configuration
+ * Generated Java based configuration.
  */
 @Configuration
 public class Jetty {
