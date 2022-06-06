@@ -45,15 +45,12 @@
         <site.jira.version.id>12315369</site.jira.version.id>
         <sling.java.version>8</sling.java.version>
         <project.build.outputTimestamp>1</project.build.outputTimestamp>
+        <org.apache.activemq.version>5.13.3</org.apache.activemq.version>
     </properties>
 
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>biz.aQute.bnd</groupId>
-                <artifactId>bnd-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.apache.rat</groupId>
                 <artifactId>apache-rat-plugin</artifactId>
@@ -91,36 +88,36 @@
         </dependency>
 
         <!-- ActiveMQ -->
-        <!-- The released OSGi bindle contains a bleuprint config with an invalid import that cant be satisfied without a custom
-         bundle, hence these will be embeded. -->
+        <!-- The released OSGi bundle contains a blueprint config with an invalid import that cant be satisfied without a custom
+         bundle, hence these will be embedded. -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-broker</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-pool</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-jms-pool</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-kahadb-store</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
