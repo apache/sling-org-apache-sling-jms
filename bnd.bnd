@@ -1,0 +1,19 @@
+Embed-Dependency:\
+    activemq-broker,\
+    activemq-client,\
+    activemq-pool,\
+    activemq-protobuf,\
+    activemq-kahadb-store,\
+    activemq-jms-pool,\
+    hawtbuf,\
+    gson
+
+Import-Package:\
+    org.apache.activemq.jaas*;resolution:=optional,\
+    org.apache.commons.net.ftp*;resolution:=optional,\
+    org.apache.geronimo.transaction*;resolution:=optional,\
+    org.fusesource.hawtbuf*;resolution:=optional,\
+    org.apache.commons.pool2*;resolution:=optional,\
+    javax.jmdns*;resolution:=optional,\
+    !org.apache.maven*,\
+    *

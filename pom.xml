@@ -22,13 +22,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache.sling</groupId>
-        <artifactId>sling</artifactId>
-        <version>30</version>
+        <artifactId>sling-bundle-parent</artifactId>
+        <version>47</version>
         <relativePath />
     </parent>
 
     <artifactId>org.apache.sling.jms</artifactId>
-    <packaging>bundle</packaging>
     <version>1.0.1-SNAPSHOT</version>
 
     <name>Apache Sling MoM Implementation using JMS with AMQ</name>
@@ -44,72 +43,14 @@
 
     <properties>
         <site.jira.version.id>12315369</site.jira.version.id>
-        <sling.java.version>7</sling.java.version>
-        <exam.version>4.4.0</exam.version>
-        <url.version>2.4.5</url.version>
-        <bundle.build.dir>${basedir}/target</bundle.build.dir>
-        <bundle.file.name>${bundle.build.dir}/${project.build.finalName}.jar</bundle.file.name>
-        <min.port>37000</min.port>
-        <max.port>37999</max.port>
+        <sling.java.version>8</sling.java.version>
+        <project.build.outputTimestamp>1</project.build.outputTimestamp>
+        <org.apache.activemq.version>5.13.2</org.apache.activemq.version>
     </properties>
 
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-scr-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Embed-Dependency>
-                            activemq-broker,
-                            activemq-client,
-                            activemq-pool,
-                            activemq-protobuf,
-                            activemq-kahadb-store,
-                            activemq-jms-pool,
-                            hawtbuf,
-                            gson</Embed-Dependency>
-                        <Import-Package>
-                            org.apache.activemq.jaas*;resolution:=optional,
-                            org.apache.commons.net.ftp*;resolution:=optional,
-                            org.apache.geronimo.transaction*;resolution:=optional,
-                            org.fusesource.hawtbuf*;resolution:=optional,
-                            org.apache.commons.pool2*;resolution:=optional,
-                            javax.jmdns*;resolution:=optional,
-                            !org.apache.maven*,
-                            *
-                        </Import-Package>
-                        <!--
-                        <Import-Package>com.thoughtworks.xstream*;resolution:=optional,
-                            org.apache.activeio*;resolution:=optional,
-                            org.apache.commons.pool*;resolution:=optional,
-                            org.apache.derby*;resolution:=optional,
-                            org.apache.tools.ant*;resolution:=optional,
-                            org.apache.maven*;resolution:=optional,
-                            org.apache.xbean*;resolution:=optional,
-                            '=org.apache.xbean.spring.context.v2;resolution:=optional',
-                            org.apache.xpath*;resolution:=optional,
-                            org.codehaus.jam*;resolution:=optional,
-                            org.springframework*;resolution:=optional,
-                            org.springframework.beans.factory.xml;resolution:=optional,
-                            org.w3c.dom.traversal*;resolution:=optional,
-                            org.apache.commons.net*;resolution:=optional,
-                            org.apache.kahadb*;resolution:=optional,
-                            org.apache.activemq.ra*;resolution:=optional,
-                            org.apache.geronimo.transaction.manager*;resolution:=optional,
-                            *
-                        </Import-Package>
-                        -->
-                        <Export-Package />
-                    </instructions>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.rat</groupId>
                 <artifactId>apache-rat-plugin</artifactId>
@@ -137,12 +78,6 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>16.0.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.scr.annotations</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -153,36 +88,36 @@
         </dependency>
 
         <!-- ActiveMQ -->
-        <!-- The released OSGi bindle contains a bleuprint config with an invalid import that cant be satisfied without a custom
-         bundle, hence these will be embeded. -->
+        <!-- The released OSGi bundle contains a blueprint config with an invalid import that cant be satisfied without a custom
+         bundle, hence these will be embedded. -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-broker</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-pool</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-jms-pool</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-kahadb-store</artifactId>
-            <version>5.13.2</version>
+            <version>${org.apache.activemq.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -206,8 +141,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -215,7 +148,21 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.core</artifactId>
-            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.service.component.annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.service.metatype.annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.annotation.versioning</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -224,6 +171,7 @@
             <version>2.4.0</version>
             <scope>provided</scope>
         </dependency>
+
       <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
@@ -237,8 +185,8 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
+            <artifactId>mockito-core</artifactId>
+            <version>4.6.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
