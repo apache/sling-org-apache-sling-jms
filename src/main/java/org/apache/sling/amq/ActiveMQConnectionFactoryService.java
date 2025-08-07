@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  * Available URI patterns.
  *
  * xbean:org/apache/sling/amq/activemq.xml will result in the Broker searching for org/apache/sling/amq/activemq.xml in
- * the classpath and using that to configure the Borker, see http://activemq.apache.org/xml-configuration.html for details
+ * the classpath and using that to configure the Broker, see http://activemq.apache.org/xml-configuration.html for details
  * of the format. See that location for an example of the default configuration.
  *
  *
